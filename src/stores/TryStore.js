@@ -5,6 +5,7 @@ class TryStore{
 	constructor(){
 		this.bindActions(TryActions);
 		this.searchQuery ='';
+		this.userInfo = [];
 		this.playerStats = [];
 		this.playerAchievements =[];
 	}
@@ -13,7 +14,12 @@ class TryStore{
 		this.searchQuery = e.target.value;
 	}
 
-	
+	onGetUserInfoSuccess(data){
+		console.log(this.userInfo);
+		this.userInfo = data;
+		console.log(this.userInfo);
+	}
+
 	onGetStatesSuccess(data){
 		this.playerStats = data.stats;
 		this.playerAchievements = data.achievements;

@@ -5,12 +5,28 @@ class TryActions{
 		this.generateActions(
 			'updateSearch',
 			'getStatesSuccess',
-			'getStatesFail'
+			'getStatesFail',
+			'getUserInfoSuccess',
+			'getUserInfoFail'
 		);
 	}
 
+	getUserInfo(payload){
+		console.log('userInfo...');
+		$.ajax({
+			url:'/api/userInfo',
+			data:{
+				name:payload.searchQuery
+			}
+		}).done((data)=>{
+			this.getUserInfoSuccess(data);
+		}).fail((error)=>{
+			this.getUserInfoFail(error);
+		});
+	}
+
 	getStates(payload){
-		console.log('getting...');
+		//console.log('getting...');
 		$.ajax({
 			url: '/api/states',
 			data: {

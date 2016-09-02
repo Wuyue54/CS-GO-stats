@@ -32,6 +32,10 @@ class Try extends React.Component{
 				searchQuery:searchQuery,
 				searchForm: this.refs.searchForm
 			});
+			TryActions.getUserInfo({
+				searchQuery: searchQuery,
+				searchForm: this.refs.searchForm
+			})
 		}
 	}
 

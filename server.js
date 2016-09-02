@@ -1,3 +1,4 @@
+"use strict";
 require('babel-register');
 
 const http = require('http');
@@ -21,9 +22,8 @@ const STEAM_URL = 'http://api.steampowered.com/ISteamUserStats/GetUserStatsForGa
 
 
 app.get('/api/states', function(req,res){
-	"use strict";
-	var userSteamID = req.query.name;
-	var url = STEAM_URL+API_KEY+'&steamid='+ userSteamID;
+	let userSteamID = req.query.name;
+	let url = STEAM_URL+API_KEY+'&steamid='+ userSteamID;
 	request(url , function(error, response, body){
 		if(error){
 	        console.log('Error:', error);
@@ -36,6 +36,24 @@ app.get('/api/states', function(req,res){
 
 	    body = JSON.parse(body);
 		res.send(body.playerstats);
+	});
+});
+
+app.get('/api/userInfo', function(req,res){
+	let userSteamID = req.query.name;
+	let url = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' +API_KEY+'&steamids='+ userSteamID;
+	console.log(url);
+	request(url,  function(error, response, body){
+		if(error){
+			console.log('Error:', error);
+			res.send(error);
+		}
+		if(response.statusCode !==200){
+			console.log('Invalid Status Code Returned:', response.statusCode);
+		}
+
+		body = JSON.parse(body);
+		res.send(body.response.players[0]);
 	});
 });
 
