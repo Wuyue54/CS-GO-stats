@@ -21,7 +21,9 @@ const STEAM_URL = 'http://api.steampowered.com/ISteamUserStats/GetUserStatsForGa
 
 
 app.get('/api/states', function(req,res){
-	const url = STEAM_URL+API_KEY+'&steamid='+MY_STEAM_ID;
+	"use strict";
+	var userSteamID = req.query.name;
+	var url = STEAM_URL+API_KEY+'&steamid='+ userSteamID;
 	request(url , function(error, response, body){
 		if(error){
 	        console.log('Error:', error);

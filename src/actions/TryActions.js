@@ -3,6 +3,7 @@ import alt from '../alt';
 class TryActions{
 	constructor(){
 		this.generateActions(
+			'updateSearch',
 			'getStatesSuccess',
 			'getStatesFail'
 		);
@@ -12,6 +13,9 @@ class TryActions{
 		console.log('getting...');
 		$.ajax({
 			url: '/api/states',
+			data: {
+				name : payload.searchQuery
+			}
 		}).done((data)=>{
 			this.getStatesSuccess(data);
 		}).fail((error)=>{

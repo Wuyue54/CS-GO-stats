@@ -24,8 +24,15 @@ class Try extends React.Component{
 
 	handleSubmit(e){
 		e.preventDefault();
-		TryActions.getStates();
-		console.log(this.state);
+		
+		let searchQuery = this.state.searchQuery.trim();
+
+		if(searchQuery){
+			TryActions.getStates({
+				searchQuery:searchQuery,
+				searchForm: this.refs.searchForm
+			});
+		}
 	}
 
 	render(){
@@ -42,14 +49,15 @@ class Try extends React.Component{
 			achievementsList.push(<List key = {index}
 										name = {d.name}
 										value = {d.achieved}
-									/>)
+									/>);
 		});
 		
 		return(
 			
 
 			<div>
-				<form onSubmit = {this.handleSubmit.bind(this)}>
+				<form ref = 'searchForm' onSubmit = {this.handleSubmit.bind(this)}>
+					<input type ='text'	placeholder = 'Please type your 64 bit steam id' value = {this.state.searchQuery} onChange = {TryActions.updateSearch} />
 					<button onClick={this.handleSubmit.bind(this)}>GO</button>
 				</form>
 				{statsList}
