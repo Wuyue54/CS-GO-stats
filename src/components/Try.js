@@ -2,6 +2,7 @@ import React from 'react';
 import TryActions from '../actions/TryActions';
 import TryStore from '../stores/TryStore';
 import List from './List';
+import UserInfo from './UserInfo';
 
 class Try extends React.Component{
 	constructor(props){
@@ -64,8 +65,15 @@ class Try extends React.Component{
 					<input type ='text'	placeholder = 'Please type your 64 bit steam id' value = {this.state.searchQuery} onChange = {TryActions.updateSearch} />
 					<button onClick={this.handleSubmit.bind(this)}>GO</button>
 				</form>
+				<UserInfo 
+					personaname ={this.state.userInfo.personaname}
+					profileurl = {this.state.userInfo.profileurl}
+					imgUrl = {this.state.userInfo.avatarfull}
+				/>
 				{statsList}
 				{achievementsList}
+
+
 			</div>
 		);
 	}

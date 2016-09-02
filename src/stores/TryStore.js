@@ -15,14 +15,13 @@ class TryStore{
 	}
 
 	onGetUserInfoSuccess(data){
-		console.log(this.userInfo);
 		this.userInfo = data;
-		console.log(this.userInfo);
 	}
 
 	onGetStatesSuccess(data){
 		this.playerStats = data.stats;
 		this.playerAchievements = data.achievements;
+		console.log(this.playerStats);
 	}
 }
 

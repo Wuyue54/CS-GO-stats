@@ -42,7 +42,6 @@ app.get('/api/states', function(req,res){
 app.get('/api/userInfo', function(req,res){
 	let userSteamID = req.query.name;
 	let url = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' +API_KEY+'&steamids='+ userSteamID;
-	console.log(url);
 	request(url,  function(error, response, body){
 		if(error){
 			console.log('Error:', error);

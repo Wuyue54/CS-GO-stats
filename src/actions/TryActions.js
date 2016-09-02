@@ -12,7 +12,6 @@ class TryActions{
 	}
 
 	getUserInfo(payload){
-		console.log('userInfo...');
 		$.ajax({
 			url:'/api/userInfo',
 			data:{
