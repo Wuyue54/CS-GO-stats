@@ -6,7 +6,7 @@ class App extends React.Component{
 	render(){
 		return(
 			<div>
-				<h1>My CS: GO stats</h1>
+				<h1>CS: GO stats</h1>
 				<Try />
 			</div>
 

@@ -3,6 +3,7 @@ import TryActions from '../actions/TryActions';
 import TryStore from '../stores/TryStore';
 import List from './List';
 import UserInfo from './UserInfo';
+import OverallStats from './OverallStats';
 
 class Try extends React.Component{
 	constructor(props){
@@ -43,18 +44,23 @@ class Try extends React.Component{
 	render(){
 		let statsList = [];
 		let achievementsList =[];
+		let statsObj ={};
+		let achieveObj = {};
 		this.state.playerStats.forEach((d,index)=>{
 			statsList.push(<List key ={index}
 								name = {d.name}
 								value = {d.value}
 							/>);
+			statsObj[d.name] = d.value;
 		});
+		console.log(statsObj);
 
 		this.state.playerAchievements.forEach((d,index)=>{
 			achievementsList.push(<List key = {index}
 										name = {d.name}
 										value = {d.achieved}
 									/>);
+			achieveObj[d.name] = d.value;
 		});
 		
 		return(
@@ -70,8 +76,22 @@ class Try extends React.Component{
 					profileurl = {this.state.userInfo.profileurl}
 					imgUrl = {this.state.userInfo.avatarfull}
 				/>
-				{statsList}
-				{achievementsList}
+
+				<OverallStats
+					kill = {statsObj.total_kills}
+					death = {statsObj.total_deaths}
+					deathRatio = {(statsObj.total_kills/statsObj.total_deaths).toFixed(4)*100 +'%'}
+					headshot = {statsObj.total_kills_headshot}
+					knife = {statsObj.total_kills_knife}
+					wins = {statsObj.total_wins}
+					winRatio ={(statsObj.total_wins/statsObj.total_rounds_played).toFixed(4)*100 +'%'}
+					mvp = {statsObj.total_mvps} 
+					shots = {123}
+					accuracy ={100}
+				/>
+				
+				{/*statsList*/}
+				{/*achievementsList*/}
 
 
 			</div>
