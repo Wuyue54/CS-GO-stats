@@ -26,6 +26,7 @@ class Try extends React.Component{
 
 	handleSubmit(e){
 		e.preventDefault();
+		e.stopPropagation();
 		
 		let searchQuery = this.state.searchQuery.trim();
 
@@ -67,29 +68,31 @@ class Try extends React.Component{
 			
 
 			<div>
-				<form ref = 'searchForm' onSubmit = {this.handleSubmit.bind(this)}>
+				<form className ='searchForm'  ref = 'searchForm' onSubmit = {this.handleSubmit.bind(this)}>
 					<input type ='text'	placeholder = 'Please type your 64 bit steam id' value = {this.state.searchQuery} onChange = {TryActions.updateSearch} />
-					<button onClick={this.handleSubmit.bind(this)}>GO</button>
+					<button className ='btn' onClick={this.handleSubmit.bind(this)}>GO</button>
 				</form>
-				<UserInfo 
-					personaname ={this.state.userInfo.personaname}
-					profileurl = {this.state.userInfo.profileurl}
-					imgUrl = {this.state.userInfo.avatarfull}
-				/>
-
-				<OverallStats
-					kill = {statsObj.total_kills}
-					death = {statsObj.total_deaths}
-					deathRatio = {(statsObj.total_kills/statsObj.total_deaths).toFixed(4)*100 +'%'}
-					headshot = {statsObj.total_kills_headshot}
-					knife = {statsObj.total_kills_knife}
-					wins = {statsObj.total_wins}
-					winRatio ={(statsObj.total_wins/statsObj.total_rounds_played).toFixed(4)*100 +'%'}
-					mvp = {statsObj.total_mvps} 
-					shots = {123}
-					accuracy ={100}
-				/>
-				
+				{this.state.ajaxSuccessful?
+				<div>	
+					<UserInfo 
+						personaname ={this.state.userInfo.personaname}
+						profileurl = {this.state.userInfo.profileurl}
+						imgUrl = {this.state.userInfo.avatarfull}
+					/>
+					<OverallStats
+						kill = {statsObj.total_kills}
+						death = {statsObj.total_deaths}
+						deathRatio = {(statsObj.total_kills/statsObj.total_deaths).toFixed(4)*100 +'%'}
+						headshot = {statsObj.total_kills_headshot}
+						knife = {statsObj.total_kills_knife}
+						wins = {statsObj.total_wins}
+						winRatio ={(statsObj.total_wins/statsObj.total_rounds_played).toFixed(4)*100 +'%'}
+						mvp = {statsObj.total_mvps} 
+						shots = {123}
+						accuracy ={100}
+					/>
+				</div>
+				:null}
 				{/*statsList*/}
 				{/*achievementsList*/}
 

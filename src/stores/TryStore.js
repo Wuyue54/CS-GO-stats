@@ -4,6 +4,7 @@ import alt from '../alt';
 class TryStore{
 	constructor(){
 		this.bindActions(TryActions);
+		this.ajaxSuccessful = 0;
 		this.searchQuery ='';
 		this.userInfo = [];
 		this.playerStats = [];
@@ -21,7 +22,7 @@ class TryStore{
 	onGetStatesSuccess(data){
 		this.playerStats = data.stats;
 		this.playerAchievements = data.achievements;
-		console.log(this.playerStats);
+		this.ajaxSuccessful = 1;
 	}
 }
 
