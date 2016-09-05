@@ -54,6 +54,7 @@ class Try extends React.Component{
 							/>);
 			statsObj[d.name] = d.value;
 		});
+
 		console.log(statsObj);
 
 		this.state.playerAchievements.forEach((d,index)=>{
@@ -61,9 +62,11 @@ class Try extends React.Component{
 										name = {d.name}
 										value = {d.achieved}
 									/>);
-			achieveObj[d.name] = d.value;
+			achieveObj[d.name] = d.achieved;
 		});
 		
+		console.log(achieveObj);
+
 		return(
 			
 

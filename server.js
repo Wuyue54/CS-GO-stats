@@ -18,7 +18,9 @@ app.get('/', function(req,res){
 
 const API_KEY = 'DBDBBEE2A6357964A7A3A4D563C273A8';
 const MY_STEAM_ID = '76561198267012829';
-const STEAM_URL = 'http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=730&key='
+const STEAM_URL = 'http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=730&key=';
+
+const whereIcanFoundIcons ='http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key=DBDBBEE2A6357964A7A3A4D563C273A8&appid=730';
 
 
 app.get('/api/states', function(req,res){
