@@ -14,6 +14,7 @@ class Try extends React.Component{
 
 	componentDidMount(){
 		TryStore.listen(this.onChange);
+		TryActions.getSchema();
 	}
 
 	componentWillUnmount(){

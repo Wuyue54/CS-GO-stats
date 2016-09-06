@@ -9,11 +9,18 @@ class TryStore{
 		this.userInfo = [];
 		this.playerStats = [];
 		this.playerAchievements =[];
+		this.gameSchema ={};
 	}
 
 	onUpdateSearch(e){
 		this.searchQuery = e.target.value;
 	}
+
+	onGetSchemaSuccess(data){
+		this.gameSchema = data;
+		console.log(this.gameSchema);
+	}
+
 
 	onGetUserInfoSuccess(data){
 		this.userInfo = data;

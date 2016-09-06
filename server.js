@@ -22,6 +22,22 @@ const STEAM_URL = 'http://api.steampowered.com/ISteamUserStats/GetUserStatsForGa
 
 const whereIcanFoundIcons ='http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key=DBDBBEE2A6357964A7A3A4D563C273A8&appid=730';
 
+app.get('/api/getSchema',function(req,res){
+	let url ='http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key='+ API_KEY+'&appid=730';
+	// console.log(url);
+	request(url, function(error, response, body){
+		if(error){
+			console.log(error);
+			res.send(error);
+		}
+		if(response.statusCode !==200){
+			console.log('Invalid Status Code Returned:', response.statusCode);
+		}
+
+		body = JSON.parse(body);
+		res.send(body.game.availableGameStats);
+	});
+});
 
 app.get('/api/states', function(req,res){
 	let userSteamID = req.query.name;

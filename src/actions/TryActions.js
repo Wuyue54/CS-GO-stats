@@ -7,8 +7,20 @@ class TryActions{
 			'getStatesSuccess',
 			'getStatesFail',
 			'getUserInfoSuccess',
-			'getUserInfoFail'
+			'getUserInfoFail',
+			'getSchemaSuccess',
+			'getSchemaFail'
 		);
+	}
+
+	getSchema(){
+		$.ajax({
+			url:'/api/getSchema'
+		}).done((data)=>{
+			this.getSchemaSuccess(data);
+		}).fail((error)=>{
+			this.getSchemaFail(error);
+		});
 	}
 
 	getUserInfo(payload){
