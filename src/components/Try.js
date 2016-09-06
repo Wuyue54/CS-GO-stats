@@ -4,6 +4,7 @@ import TryStore from '../stores/TryStore';
 import List from './List';
 import UserInfo from './UserInfo';
 import OverallStats from './OverallStats';
+import Achievements from './Achievements';
 
 class Try extends React.Component{
 	constructor(props){
@@ -94,6 +95,10 @@ class Try extends React.Component{
 						mvp = {statsObj.total_mvps} 
 						shots = {123}
 						accuracy ={100}
+					/>
+
+					<Achievements
+						achievements = {this.state.gameSchema.achievements}
 					/>
 				</div>
 				:null}
