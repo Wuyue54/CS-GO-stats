@@ -113,7 +113,10 @@ h1{
 .achievements-list{
 	margin-bottom: 3em;
 	background-color: $section-bg;
-	padding: $padding;
+	padding-top: $padding;
+	padding-bottom: $padding;
+	padding-left: $padding;
+	padding-right: $padding/2;
 }
 
 .achievement{

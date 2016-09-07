@@ -18,7 +18,7 @@ class TryStore{
 
 	onGetSchemaSuccess(data){
 		this.gameSchema = data;
-		console.log(this.gameSchema);
+		// console.log(this.gameSchema);
 	}
 
 

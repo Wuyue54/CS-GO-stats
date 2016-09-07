@@ -57,7 +57,7 @@ class Try extends React.Component{
 			statsObj[d.name] = d.value;
 		});
 
-		// console.log(statsObj);
+		console.log(statsObj);
 
 		this.state.playerAchievements.forEach((d,index)=>{
 			achievementsList.push(<List key = {index}
