@@ -28,7 +28,6 @@ app.get('/api/getSchema',function(req,res){
 	request(url, function(error, response, body){
 		if(error){
 			console.log(error);
-			res.send(error);
 		}
 		if(response.statusCode !==200){
 			console.log('Invalid Status Code Returned:', response.statusCode);
@@ -45,7 +44,6 @@ app.get('/api/states', function(req,res){
 	request(url , function(error, response, body){
 		if(error){
 	        console.log('Error:', error);
-	        res.send(error);
 	    }
 
 	    if(response.statusCode !== 200){
@@ -63,7 +61,6 @@ app.get('/api/userInfo', function(req,res){
 	request(url,  function(error, response, body){
 		if(error){
 			console.log('Error:', error);
-			res.send(error);
 		}
 		if(response.statusCode !==200){
 			console.log('Invalid Status Code Returned:', response.statusCode);

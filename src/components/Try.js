@@ -74,7 +74,7 @@ class Try extends React.Component{
 
 			<div>
 				<form className ='searchForm'  ref = 'searchForm' onSubmit = {this.handleSubmit.bind(this)}>
-					<input type ='text'	placeholder = 'Please type your 64 bit steam id' value = {this.state.searchQuery} onChange = {TryActions.updateSearch} />
+					<input autoComplete='on' type ='text'	placeholder = 'Please type your 64 bit steam id' value = {this.state.searchQuery} onChange = {TryActions.updateSearch} />
 					<button className ='btn' onClick={this.handleSubmit.bind(this)}>GO</button>
 				</form>
 				{this.state.ajaxSuccessful?
@@ -84,6 +84,8 @@ class Try extends React.Component{
 						profileurl = {this.state.userInfo.profileurl}
 						imgUrl = {this.state.userInfo.avatarfull}
 					/>
+
+					<h2 className = 'subTitle'>Stats</h2>
 					<OverallStats
 						kill = {statsObj.total_kills}
 						death = {statsObj.total_deaths}
@@ -97,6 +99,7 @@ class Try extends React.Component{
 						accuracy ={100}
 					/>
 
+					<h2 className ='subTitle'>Achievements</h2>
 					<Achievements
 						achievementSchema = {this.state.gameSchema.achievements}
 						achievements ={achieveObj}

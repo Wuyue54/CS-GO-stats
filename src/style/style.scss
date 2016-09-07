@@ -11,6 +11,14 @@ $padding: 16px;
     justify-content: space-between;
 }
 
+@mixin box-sizing($border-box) {
+ 	box-sizing: $border-box;
+    -webkit-box-sizing: $border-box;
+    -moz-box-sizing: $border-box;
+  	-ms-box-sizing: $border-box;
+  	-o-box-sizing: $border-box;
+}
+
 body{
 	background-color: #0b0c1a;
 }
@@ -34,6 +42,12 @@ button{
 h1{
 	color: #FFF;
 }
+.subTitle{
+	font-size: 2em;
+	color: #FFF;
+	padding-left: $padding;
+	line-height: 2em;
+}
 
 .btn{
 	background-color: $color-blue;
@@ -50,6 +64,7 @@ h1{
 }
 .searchForm{
 	margin-left: $padding;
+	margin-bottom: 3em;
 	input{
 		padding: 1em;
 		width: 200px;
@@ -67,7 +82,7 @@ h1{
 .userInfo{
 	padding:$padding;
 	background-color: $section-bg;
-	margin-top: 4em;
+	margin-bottom: 3em;
 	overflow:hidden;
 		
 	a{	
@@ -84,7 +99,7 @@ h1{
 .overall-stats{
 	padding: $padding;
 	background-color: $section-bg;
-	margin-top: 4em;
+	margin-bottom: 3em;
 	color: #1883BE;
 	ul >li{
 		padding: 1em;
@@ -92,5 +107,46 @@ h1{
 	}
 	b{
 		color: #fff;
+	}
+}
+
+.achievements-list{
+	margin-bottom: 3em;
+	background-color: $section-bg;
+	padding: $padding;
+}
+
+.achievement{
+	position: relative;
+	display: inline-block;
+	padding-right: $padding/2;
+	cursor: help;
+	&:hover{
+		// border: 1px solid $color-blue;
+		.thumb{
+			display: block;
+		}
+	}
+}
+
+.thumb{
+	position: absolute;
+	left: 32px;
+	top: 32px;
+	display: none;
+	width: 300px;
+	background-color: rgba(11,12,26,0.9);
+
+	padding: 1em;
+	color: #FFF;
+
+	z-index: 3;
+	dt{
+		line-height: 2em;
+	}
+	dd{
+		color: #e8e8e8;
+		line-height: 2em;
+		font-size: 0.8em;
 	}
 }

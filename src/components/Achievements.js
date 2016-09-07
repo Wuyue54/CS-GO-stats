@@ -4,36 +4,41 @@ class Achievements extends React.Component{
 	render(){
 
 		let achievements = [];
+		let achievementsFinished =[];
+		let achievementsNotFinsished = [];
 		let activeAchieve = this.props.achievements;
 
 		this.props.achievementSchema.forEach((d ,index)=>{
 			if(activeAchieve.hasOwnProperty(d.name)){
-				achievements.push(
-					<li key ={index}>
+				achievementsFinished.push(
+					<li className = 'achievement' key ={index}>
 						<img src = {d.icon} />
-						<span>{d.displayName} </span>
-						<span>{d.description}</span>
+						<dl className = 'thumb'>
+							<dt>{d.displayName} </dt>
+							<dd>{d.description}</dd>
+						</dl>
 					</li>
 
 				);
 			}else{
-				achievements.push(
-					<li key ={index}>
+				achievementsNotFinsished.push(
+					<li className = 'achievement' key ={index}>
 						<img src = {d.icongray} />
-						<span>{d.displayName} </span>
-						<span>{d.description}</span>
+						<dl className = 'thumb'>
+							<dt>{d.displayName} </dt>
+							<dd>{d.description}</dd>
+						</dl>
 					</li>
 
 				);
 			}
 			
 		});
-
-
+		achievements = achievementsFinished.concat(achievementsNotFinsished);
 
 		return(
-			<div className = 'row achievements-list'>
-				<ul>
+			<div className = 'row '>
+				<ul className = 'achievements-list'>
 					{achievements}
 				</ul>
 			</div>
