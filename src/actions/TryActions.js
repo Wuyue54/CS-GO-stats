@@ -1,4 +1,5 @@
 import alt from '../alt';
+import {assign} from 'underscore';
 
 class TryActions{
 	constructor(){
@@ -30,7 +31,8 @@ class TryActions{
 				name:payload.searchQuery
 			}
 		}).done((data)=>{
-			this.getUserInfoSuccess(data);
+			assign(payload, data);
+			this.getUserInfoSuccess(payload);
 		}).fail((error)=>{
 			this.getUserInfoFail(error);
 		});

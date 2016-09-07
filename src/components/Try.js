@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router';
+import {Link,withRouter} from 'react-router';
 import TryActions from '../actions/TryActions';
 import TryStore from '../stores/TryStore';
 import List from './List';
@@ -8,7 +8,7 @@ import OverallStats from './OverallStats';
 import Achievements from './Achievements';
 
 class Try extends React.Component{
-	constructor(props){
+	constructor(props,context){
 		super(props);
 		this.state = TryStore.getState();
 		this.onChange = this.onChange.bind(this);
@@ -30,17 +30,19 @@ class Try extends React.Component{
 	handleSubmit(e){
 		e.preventDefault();
 		e.stopPropagation();
-		
-		let searchQuery = this.state.searchQuery.trim();
 
+		console.log('this.props.router',this.props.router);
+		let searchQuery = this.state.searchQuery.trim();
 		if(searchQuery){
 			TryActions.getStates({
 				searchQuery:searchQuery,
-				searchForm: this.refs.searchForm
+				searchForm: this.refs.searchForm,
+				history: this.props.router
 			});
 			TryActions.getUserInfo({
 				searchQuery: searchQuery,
-				searchForm: this.refs.searchForm
+				searchForm: this.refs.searchForm,
+				history: this.props.router
 			})
 		}
 	}
@@ -58,7 +60,7 @@ class Try extends React.Component{
 			statsObj[d.name] = d.value;
 		});
 
-		console.log(statsObj);
+		//console.log(statsObj);
 
 		this.state.playerAchievements.forEach((d,index)=>{
 			achievementsList.push(<List key = {index}
@@ -116,4 +118,6 @@ class Try extends React.Component{
 	}
 }
 
-export default Try;
+
+
+export default withRouter(Try);

@@ -23,7 +23,10 @@ class TryStore{
 
 
 	onGetUserInfoSuccess(data){
+		// console.log(data);
 		this.userInfo = data;
+		// console.log(data.history);
+		data.history.push('/' + data.steamid);
 	}
 
 	onGetStatesSuccess(data){
