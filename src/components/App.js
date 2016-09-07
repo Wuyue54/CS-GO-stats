@@ -1,5 +1,6 @@
 import React from 'react';
 import Try from './Try';
+import Footer from './Footer';
 
 
 class App extends React.Component{
@@ -8,6 +9,7 @@ class App extends React.Component{
 			<div className = 'container'>
 				<h1>CS: GO stats</h1>
 				<Try />
+				<Footer />
 			</div>
 
 		);

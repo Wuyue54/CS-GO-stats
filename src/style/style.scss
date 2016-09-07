@@ -72,6 +72,9 @@ h1{
 	button{
 		padding: 1em;
 		cursor: pointer;
+		a{
+			color: #FFF;
+		}
 	}
 }
 
@@ -152,4 +155,12 @@ h1{
 		line-height: 2em;
 		font-size: 0.8em;
 	}
+}
+
+.footer{
+	height: 150px;
+	background-color: $section-bg;
+	color: #FFF;
+	padding: $padding;
+
 }

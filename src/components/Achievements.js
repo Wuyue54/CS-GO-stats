@@ -34,6 +34,7 @@ class Achievements extends React.Component{
 			}
 			
 		});
+		
 		achievements = achievementsFinished.concat(achievementsNotFinsished);
 
 		return(

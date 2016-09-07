@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 import TryActions from '../actions/TryActions';
 import TryStore from '../stores/TryStore';
 import List from './List';
@@ -75,7 +76,7 @@ class Try extends React.Component{
 			<div>
 				<form className ='searchForm'  ref = 'searchForm' onSubmit = {this.handleSubmit.bind(this)}>
 					<input autoComplete='on' type ='text'	placeholder = 'Please type your 64 bit steam id' value = {this.state.searchQuery} onChange = {TryActions.updateSearch} />
-					<button className ='btn' onClick={this.handleSubmit.bind(this)}>GO</button>
+					<button className ='btn' onClick={this.handleSubmit.bind(this)}><Link to={'/'+this.state.searchQuery.trim()}>GO</Link></button>
 				</form>
 				{this.state.ajaxSuccessful?
 				<div>	
