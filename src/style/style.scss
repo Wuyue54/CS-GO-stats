@@ -162,4 +162,16 @@ h1{
 	color: #FFF;
 	padding: $padding;
 
+	a{	
+		color: #FFF;
+		cursor: pointer;
+		&:hover{
+			color: $color-blue;
+		}
+	}
+}
+
+.copyright{
+	text-align: center;
+	margin-top: 3em;
 }

@@ -9,6 +9,7 @@ class App extends React.Component{
 		return(
 			<div className = 'container'>
 				<h1>CS: GO stats</h1>
+			{/*this.props.children*/}
 				<Try  history = {this.props.history}/>
 				<Footer />
 			</div>
