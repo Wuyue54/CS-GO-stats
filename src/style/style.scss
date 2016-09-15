@@ -36,7 +36,7 @@ input{
 }
 
 button{
-	border:0 ;		
+	border:0 ;
 }
 
 h1{
@@ -61,6 +61,14 @@ h1{
 	h1{
 		margin-left: $padding;
 	}
+}
+
+.home-bg{
+	height: 500px;
+	background-image: url("../imgs/cs-bg1.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-bottom: 3em;
 }
 .searchForm{
 	margin-left: $padding;
@@ -87,8 +95,8 @@ h1{
 	background-color: $section-bg;
 	margin-bottom: 3em;
 	overflow:hidden;
-		
-	a{	
+
+	a{
 		font-size: 36px;
 		margin-left: $padding;
 		color:#FFF;
@@ -162,7 +170,7 @@ h1{
 	color: #FFF;
 	padding: $padding;
 
-	a{	
+	a{
 		color: #FFF;
 		cursor: pointer;
 		&:hover{

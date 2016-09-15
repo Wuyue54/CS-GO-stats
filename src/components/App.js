@@ -12,8 +12,6 @@ class App extends React.Component{
 				<h1>CS: GO stats</h1>
 				<Search />
 				{this.props.children}
-
-				 {/*<Try  history = {this.props.history}/>*/}
 				<Footer />
 			</div>
 

@@ -26,6 +26,19 @@ class Stats extends React.Component{
     StatsStore.listen(this.onChange);
   }
 
+  componentDidUpdate(prevProps){
+    if (prevProps.params.userID !== this.props.params.userID) {
+      let query = this.props.params.userID;
+      console.log(query);
+      StatsActions.getUserInfo({
+        searchQuery: query
+      });
+      StatsActions.getStats({
+        searchQuery: query
+      });
+    }
+  }
+
   componentWillUnmount(){
     StatsStore.unlisten(this.onChange);
   }

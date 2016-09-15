@@ -21,7 +21,7 @@ app.get('/', function(req,res){
 	res.sendFile(__dirname + '/index.html');
 });
 
-
+// another test steamID 76561198174597537
 const API_KEY = 'DBDBBEE2A6357964A7A3A4D563C273A8';
 const MY_STEAM_ID = '76561198267012829';
 const STEAM_URL = 'http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=730&key=';

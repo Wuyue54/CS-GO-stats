@@ -17,6 +17,7 @@ class StatsStore{
 
 
 	onGetUserInfoSuccess(data){
+    console.log("this is userInfo", data);
 		this.userInfo = data;
 	}
 

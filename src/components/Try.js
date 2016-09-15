@@ -15,7 +15,6 @@ class Try extends React.Component{
 	}
 
 	componentDidMount(){
-		console.log(this.props.params.userID);
 		TryStore.listen(this.onChange);
 		TryActions.getSchema();
 	}
