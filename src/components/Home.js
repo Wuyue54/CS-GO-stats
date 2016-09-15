@@ -1,11 +1,7 @@
 import React from 'react';
 
 class Home extends React.Component{
-	constructor(props){
-		super(props);
-		// this.onChange = this.onChange.bind(this);	
-	}
-
+	
 	render(){
 		return(
 			<div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import Home from './Home';
+import Search from './Search';
 import Try from './Try';
 import Footer from './Footer';
 
@@ -9,8 +10,10 @@ class App extends React.Component{
 		return(
 			<div className = 'container'>
 				<h1>CS: GO stats</h1>
-			{/*this.props.children*/}
-				<Try  history = {this.props.history}/>
+				<Search />
+				{this.props.children}
+
+				 {/*<Try  history = {this.props.history}/>*/}
 				<Footer />
 			</div>
 

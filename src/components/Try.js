@@ -15,6 +15,7 @@ class Try extends React.Component{
 	}
 
 	componentDidMount(){
+		console.log(this.props.params.userID);
 		TryStore.listen(this.onChange);
 		TryActions.getSchema();
 	}
@@ -24,14 +25,14 @@ class Try extends React.Component{
 	}
 
 	onChange(state){
-		this.setState(state);
+			this.setState(state);
 	}
 
 	handleSubmit(e){
 		e.preventDefault();
 		e.stopPropagation();
 
-		console.log('this.props.router',this.props.router);
+		// console.log('this.props.router',this.props.router);
 		let searchQuery = this.state.searchQuery.trim();
 		if(searchQuery){
 			TryActions.getStates({
@@ -69,11 +70,11 @@ class Try extends React.Component{
 									/>);
 			achieveObj[d.name] = d.achieved;
 		});
-		
+
 		// console.log(achieveObj);
 
 		return(
-			
+
 
 			<div>
 				<form className ='searchForm'  ref = 'searchForm' onSubmit = {this.handleSubmit.bind(this)}>
@@ -81,8 +82,8 @@ class Try extends React.Component{
 					<button className ='btn' onClick={this.handleSubmit.bind(this)}><Link to={'/'+this.state.searchQuery.trim()}>GO</Link></button>
 				</form>
 				{this.state.ajaxSuccessful?
-				<div>	
-					<UserInfo 
+				<div>
+					<UserInfo
 						personaname ={this.state.userInfo.personaname}
 						profileurl = {this.state.userInfo.profileurl}
 						imgUrl = {this.state.userInfo.avatarfull}
@@ -97,7 +98,7 @@ class Try extends React.Component{
 						knife = {statsObj.total_kills_knife}
 						wins = {statsObj.total_wins}
 						winRatio ={(statsObj.total_wins/statsObj.total_rounds_played).toFixed(4)*100 +'%'}
-						mvp = {statsObj.total_mvps} 
+						mvp = {statsObj.total_mvps}
 						shots = {123}
 						accuracy ={100}
 					/>
@@ -119,5 +120,5 @@ class Try extends React.Component{
 }
 
 
-
+// export default Try;
 export default withRouter(Try);
