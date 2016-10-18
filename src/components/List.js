@@ -1,7 +1,7 @@
 import React from 'react';
 
-class List extends React.Component{
-	render(){
+// class List extends React.Component{
+const List = ({name,value})=>{
 		return(
 			<li>
 				<span>{this.props.name} :</span>
@@ -9,7 +9,6 @@ class List extends React.Component{
 			</li>
 
 		)
-	}
 }
 
 export default List;
