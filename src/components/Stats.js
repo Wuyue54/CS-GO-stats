@@ -1,6 +1,7 @@
 import React from 'react';
 import StatsActions from '../actions/StatsActions';
 import StatsStore from '../stores/StatsStore';
+// import List from './List';
 import UserInfo from './UserInfo';
 import OverallStats from './OverallStats';
 import Achievements from './Achievements';
@@ -45,11 +46,16 @@ class Stats extends React.Component{
   }
 
   render(){
+
 		let statsObj ={};
 		let achieveObj = {};
+		this.state.playerStats.forEach((d,index)=>{
 
+			statsObj[d.name] = d.value;
+		});
 
     this.state.playerAchievements.forEach((d,index)=>{
+
 			achieveObj[d.name] = d.achieved;
 		});
 
@@ -67,11 +73,11 @@ class Stats extends React.Component{
           <OverallStats
             kill = {statsObj.total_kills}
             death = {statsObj.total_deaths}
-            deathRatio = {(statsObj.total_kills/statsObj.total_deaths).toFixed(4)*100 +'%'}
+            deathRatio = {(statsObj.total_kills/statsObj.total_deaths*100).toFixed(2) +'%'}
             headshot = {statsObj.total_kills_headshot}
             knife = {statsObj.total_kills_knife}
             wins = {statsObj.total_wins}
-            winRatio ={(statsObj.total_wins/statsObj.total_rounds_played).toFixed(4)*100 +'%'}
+            winRatio ={(statsObj.total_wins/statsObj.total_rounds_played*100).toFixed(2) +'%'}
             mvp = {statsObj.total_mvps}
             shots = {123}
             accuracy ={100}

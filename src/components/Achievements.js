@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 
 const Achievements = ({propsAchievements, achievementSchema})=>{
+
 		let achievements = [];
 		let achievementsFinished =[];
 		let achievementsNotFinsished = [];
@@ -40,6 +41,11 @@ const Achievements = ({propsAchievements, achievementSchema})=>{
 				</ul>
 			</div>
 		);
+}
+
+Achievements.propTypes = {
+	propsAchievements: PropTypes.object.isRequired,
+	achievementSchema: PropTypes.array.isRequired
 }
 
 export default Achievements;
