@@ -1,7 +1,6 @@
 import React from 'react';
 import StatsActions from '../actions/StatsActions';
 import StatsStore from '../stores/StatsStore';
-import List from './List';
 import UserInfo from './UserInfo';
 import OverallStats from './OverallStats';
 import Achievements from './Achievements';
@@ -46,23 +45,11 @@ class Stats extends React.Component{
   }
 
   render(){
-    let statsList = [];
-		let achievementsList =[];
 		let statsObj ={};
 		let achieveObj = {};
-		this.state.playerStats.forEach((d,index)=>{
-			statsList.push(<List key ={index}
-								name = {d.name}
-								value = {d.value}
-							/>);
-			statsObj[d.name] = d.value;
-		});
+
 
     this.state.playerAchievements.forEach((d,index)=>{
-			achievementsList.push(<List key = {index}
-										name = {d.name}
-										value = {d.achieved}
-									/>);
 			achieveObj[d.name] = d.achieved;
 		});
 
