@@ -39,7 +39,7 @@ class Search extends React.Component{
   render(){
     return(
       <div>
-        <form className ='searchForm'  ref = 'searchForm' onSubmit = {this.handleSubmit.bind(this)}>
+        <form className ='searchForm' autoComplete="on" ref = 'searchForm' onSubmit = {this.handleSubmit.bind(this)}>
           <input autoComplete='on' type ='text'	placeholder = 'Please type your 64 bit steam id' value = {this.state.searchQuery} onChange = {SearchActions.updateSearch} />
           <button className ='btn' onClick={this.handleSubmit.bind(this)}>GO</button>
         </form>

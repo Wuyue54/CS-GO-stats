@@ -10,14 +10,11 @@ class SearchStore{
   }
 
   onUpdateSearch(e){
-    console.log("asdf");
 		this.searchQuery = e.target.value;
 	}
 
   onGetUserInfoSuccess(data){
-		// console.log(data);
 		this.userInfo = data;
-		// console.log(data.history);
 		data.history.push('/user/' + data.steamid);
 	}
 

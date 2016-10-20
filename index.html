@@ -7,7 +7,9 @@
 	<link rel="shortcut icon" type="image/ico" href="./src/imgs/csgo.gif" />
 </head>
 <body>
-	<div id="app"></div>
-	<script src = "public/bundle.js"></script>
+	<div id="app">
+		{{ html|safe }}
+	</div>
+	<script src = "static/bundle.js"></script>
 </body>
 </html>

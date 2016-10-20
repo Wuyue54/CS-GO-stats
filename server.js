@@ -5,6 +5,7 @@ require('babel-register');
 const express = require('express');
 const path = require('path');
 const request = require('request');
+// const router = express.Router()
 
 const swig  = require('swig');
 const React = require('react');
@@ -30,10 +31,9 @@ const STEAM_URL = 'http://api.steampowered.com/ISteamUserStats/GetUserStatsForGa
 
 app.get('/api/getSchema',function(req,res){
 	let url ='http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key='+ API_KEY+'&appid=730';
-	// console.log(url);
 	request(url, function(error, response, body){
 		if(error){
-			console.log(error);
+			console.log('error',error);
 		}
 		if(response.statusCode !==200){
 			console.log('Invalid Status Code Returned:', response.statusCode);
@@ -55,7 +55,6 @@ app.get('/api/states', function(req,res){
 	    if(response.statusCode !== 200){
 	        console.log('Invalid Status Code Returned:', response.statusCode);
 	    }
-
 	    body = JSON.parse(body);
 		res.send(body.playerstats);
 	});
@@ -77,6 +76,17 @@ app.get('/api/userInfo', function(req,res){
 	});
 });
 
+
+// app.get('/user/:userID', function(req, res){
+// 		console.log("123");
+// 		// res.send(req.params.userID);
+// 		// res.sendFile(__dirname + '/index.html');
+// });
+//
+// app.get('*', function(req, res){
+// 	res.sendFile(path.resolve(__dirname,'index.html'));
+// });
+
 app.use(function(req, res) {
   Router.match({ routes: routes.default, location: req.url }, function(err, redirectLocation, renderProps) {
     if (err) {
@@ -84,11 +94,13 @@ app.use(function(req, res) {
     } else if (redirectLocation) {
       res.status(302).redirect(redirectLocation.pathname + redirectLocation.search)
     } else if (renderProps) {
+			console.log(renderProps);
       var html = ReactDOM.renderToString(React.createElement(Router.RouterContext, renderProps));
+			console.log(html);
       var page = swig.renderFile('./index.html', { html: html });
-      res.status(200).send(page);
+      res.status(200).send(html);
     } else {
-      res.status(404).send('Page Not Found')
+      res.status(404).send('Page Not Found');
     }
   });
 });

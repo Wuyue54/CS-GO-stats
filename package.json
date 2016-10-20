@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server & webpack-dev-server --hot --progress --colors",
+    "dev": "nodemon server.js & webpack-dev-server --hot --progress --colors",
     "watch": "nodemon server.js",
-    "build": "webpack --progress --colors"
+    "build": "webpack --progress --colors & nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,6 @@
     "jquery": "^3.1.0",
     "normalize.css": "^4.2.0",
     "path": "^0.12.7",
-    "randomcolor": "^0.4.4",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-router": "^2.7.0",
@@ -32,7 +31,6 @@
     "style-loader": "^0.13.1",
     "swig": "^1.4.2",
     "toastr": "^2.1.2",
-    "twitter": "1.4.0",
     "underscore": "^1.8.3",
     "url-loader": "^0.5.7"
   },
