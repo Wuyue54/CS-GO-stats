@@ -15,7 +15,6 @@ class Stats extends React.Component{
 
   componentDidMount(){
     let query = this.props.params.userID;
-    console.log(query);
     StatsActions.getSchema();
     StatsActions.getUserInfo({
       searchQuery: query
@@ -29,7 +28,6 @@ class Stats extends React.Component{
   componentDidUpdate(prevProps){
     if (prevProps.params.userID !== this.props.params.userID) {
       let query = this.props.params.userID;
-      console.log(query);
       StatsActions.getUserInfo({
         searchQuery: query
       });

@@ -1,7 +1,6 @@
 import React from 'react';
 import Home from './Home';
 import Search from './Search';
-import Try from './Try';
 import Footer from './Footer';
 
 

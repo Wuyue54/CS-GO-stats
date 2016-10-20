@@ -1,6 +1,5 @@
 import React from 'react';
 
-// class List extends React.Component{
 const List = ({name,value})=>{
 		return(
 			<li>
@@ -8,7 +7,7 @@ const List = ({name,value})=>{
 				<span>{this.props.value}</span>
 			</li>
 
-		)
+		);
 }
 
 export default List;

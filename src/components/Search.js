@@ -25,7 +25,6 @@ class Search extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     e.stopPropagation();
-    console.log(this.state);
     let searchQuery = this.state.searchQuery.trim();
     if(searchQuery){
       SearchActions.getUserInfo({
