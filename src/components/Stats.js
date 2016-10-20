@@ -93,7 +93,7 @@ class Stats extends React.Component{
           <h2 className ='subTitle'>Achievements</h2>
           <Achievements
             achievementSchema = {this.state.gameSchema.achievements}
-            achievements ={achieveObj}
+            propsAchievements ={achieveObj}
           />
         </div>
         :null}

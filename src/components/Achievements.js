@@ -1,14 +1,13 @@
 import React from 'react';
 
-class Achievements extends React.Component{
-	render(){
 
+const Achievements = ({propsAchievements, achievementSchema})=>{
 		let achievements = [];
 		let achievementsFinished =[];
 		let achievementsNotFinsished = [];
-		let activeAchieve = this.props.achievements;
+		let activeAchieve = propsAchievements;
 
-		this.props.achievementSchema.forEach((d ,index)=>{
+	  achievementSchema.forEach((d ,index)=>{
 			if(activeAchieve.hasOwnProperty(d.name)){
 				achievementsFinished.push(
 					<li className = 'achievement' key ={index}>
@@ -18,7 +17,6 @@ class Achievements extends React.Component{
 							<dd>{d.description}</dd>
 						</dl>
 					</li>
-
 				);
 			}else{
 				achievementsNotFinsished.push(
@@ -32,11 +30,9 @@ class Achievements extends React.Component{
 
 				);
 			}
-			
 		});
-		
-		achievements = achievementsFinished.concat(achievementsNotFinsished);
 
+		achievements = achievementsFinished.concat(achievementsNotFinsished);
 		return(
 			<div className = 'row '>
 				<ul className = 'achievements-list'>
@@ -44,7 +40,6 @@ class Achievements extends React.Component{
 				</ul>
 			</div>
 		);
-	}
 }
 
 export default Achievements;

@@ -1,8 +1,6 @@
 import React from 'react';
 
-class Home extends React.Component{
-
-	render(){
+const Home = ()=> {
 		return(
 			<div className = 'row'>
 				<div className = 'col-12 home-bg'>
@@ -10,7 +8,6 @@ class Home extends React.Component{
 				</div>
 			</div>
 		);
-	}
 }
 
 export default Home;

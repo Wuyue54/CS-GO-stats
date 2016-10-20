@@ -3,10 +3,9 @@ import React from 'react';
 const List = ({name,value})=>{
 		return(
 			<li>
-				<span>{this.props.name} :</span>
-				<span>{this.props.value}</span>
+				<span>{name} :</span>
+				<span>{value}</span>
 			</li>
-
 		);
 }
 

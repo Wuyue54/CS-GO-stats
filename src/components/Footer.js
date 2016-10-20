@@ -1,7 +1,6 @@
 import React from 'react';
 
-class Footer extends React.Component{
-	render(){
+const Footer = ()=>{
 		return(
 			<div className ='footer row'>
 				<p className ='copyright col-12'>
@@ -9,8 +8,6 @@ class Footer extends React.Component{
 				</p>
 			</div>
 		);
-	}
-
 }
 
 export default Footer;

@@ -4,18 +4,15 @@ import Search from './Search';
 import Footer from './Footer';
 
 
-class App extends React.Component{
-	render(){
+const App = ({children})=>{
 		return(
 			<div className = 'container'>
 				<h1>CS: GO stats</h1>
 				<Search />
-				{this.props.children}
+				{children}
 				<Footer />
 			</div>
-
 		);
-	}
 }
 
 export default App;
