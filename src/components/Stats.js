@@ -14,7 +14,6 @@ class Stats extends React.Component{
   }
 
   componentDidMount(){
-    console.lot('asdfasdfasdfasdf');
     let query = this.props.params.userID;
     StatsActions.getSchema();
     StatsActions.getUserInfo({
@@ -60,7 +59,6 @@ class Stats extends React.Component{
 			achieveObj[d.name] = d.achieved;
 		});
 
-    console.log(statsObj);
     return(
       <div>
          {/*this.state.ajaxSuccessful? :null*/}

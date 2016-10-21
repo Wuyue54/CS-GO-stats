@@ -23,6 +23,7 @@ class StatsActions{
   }
 
   getUserInfo(payload){
+    console.log("biu");
 		$.ajax({
 			url:'/api/userInfo',
 			data:{

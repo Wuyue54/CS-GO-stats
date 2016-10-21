@@ -15,11 +15,11 @@ const OverallStats = ({kill, death, deathRatio, headshot, knife, wins, winRatio,
 					<li>Win Ratio: <b>{winRatio}</b></li>
 					<li>Total MVP: <b>{mvp}</b></li>
 					<li>Total shots: <b>{shots}</b></li>
-					{/*<li>Accuracy: <b>{accuracy}</b></li>*/}
+					<li>Accuracy: <b>{accuracy}</b></li>
 				</ul>
 			</div>
 		);
-};
+}
 
 OverallStats.propTypes ={
 	kill: PropTypes.number.isRequired,
@@ -32,6 +32,5 @@ OverallStats.propTypes ={
 	mvp: PropTypes.number.isRequired,
 	shots: PropTypes.number.isRequired,
 	accuracy: PropTypes.number.isRequired
-};
-
+}
 export default OverallStats;
