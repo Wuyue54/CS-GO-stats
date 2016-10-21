@@ -10,7 +10,6 @@ class SearchStore{
   }
 
   onUpdateSearch(e){
-    console.log("asdf");
 		this.searchQuery = e.target.value;
 	}
 
