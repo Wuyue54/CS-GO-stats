@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 
 const OverallStats = ({kill, death, deathRatio, headshot, knife, wins, winRatio, mvp, shots, accuracy}) =>{
 		return(
@@ -21,16 +21,4 @@ const OverallStats = ({kill, death, deathRatio, headshot, knife, wins, winRatio,
 		);
 }
 
-OverallStats.propTypes ={
-	kill: PropTypes.number.isRequired,
-	death: PropTypes.number.isRequired,
-	deathRatio: PropTypes.string.isRequired,
-	headshot: PropTypes.number.isRequired,
-	knife: PropTypes.number.isRequired,
-	wins: PropTypes.number.isRequired,
-	winRatio: PropTypes.string.isRequired,
-	mvp: PropTypes.number.isRequired,
-	shots: PropTypes.number.isRequired,
-	accuracy: PropTypes.number.isRequired
-}
 export default OverallStats;
