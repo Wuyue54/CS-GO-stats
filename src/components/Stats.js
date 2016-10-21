@@ -63,7 +63,7 @@ class Stats extends React.Component{
     console.log(statsObj);
     return(
       <div>
-        {this.state.ajaxSuccessful?
+         {/*this.state.ajaxSuccessful? :null*/}
         <div>
           <UserInfo
             personaname ={this.state.userInfo.personaname}
@@ -91,7 +91,7 @@ class Stats extends React.Component{
             propsAchievements ={achieveObj}
           />
         </div>
-        :null}
+
     </div>
     );
   }
