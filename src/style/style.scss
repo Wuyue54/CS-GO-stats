@@ -5,10 +5,10 @@ $padding: 16px;
 @mixin flex-container{
 	display: -moz-flex;
 	display: -webkit-flex;
-    display: flex;
-    -moz-justify-content: space-between;
-    -webkit-justify-content: space-between;
-    justify-content: space-between;
+  display: flex;
+  -moz-justify-content: space-between;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
 }
 
 @mixin box-sizing($border-box) {
@@ -107,7 +107,7 @@ h1{
 	}
 }
 
-.overall-stats{
+.overall-stats, .lastgame-stats{
 	padding: $padding;
 	background-color: $section-bg;
 	margin-bottom: 3em;

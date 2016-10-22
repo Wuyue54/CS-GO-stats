@@ -2,6 +2,7 @@ import React from 'react';
 import StatsActions from '../actions/StatsActions';
 import StatsStore from '../stores/StatsStore';
 import UserInfo from './UserInfo';
+import LastGame from './LastGame';
 import OverallStats from './OverallStats';
 import Achievements from './Achievements';
 
@@ -51,7 +52,7 @@ class Stats extends React.Component{
     this.state.playerStats.forEach((d,index)=>{
       statsObj[d.name] = d.value;
     });
-
+    console.log(statsObj);
     this.state.playerAchievements.forEach((d,index)=>{
 			achieveObj[d.name] = d.achieved;
 		});
@@ -64,6 +65,18 @@ class Stats extends React.Component{
             personaname ={this.state.userInfo.personaname}
             profileurl = {this.state.userInfo.profileurl}
             imgUrl = {this.state.userInfo.avatarfull}
+          />
+
+          <h2 className = 'subTitle'>Last Match</h2>
+          <LastGame
+            kill = {statsObj.last_match_kills}
+            death ={statsObj.last_match_deaths}
+            mvp = {statsObj.last_match_mvps}
+            money = {statsObj.last_match_money_spent}
+            damage = {statsObj.last_match_damage}
+            round = {statsObj.last_match_rounds}
+            tWins = {statsObj.last_match_t_wins}
+            ctWins = {statsObj.last_match_ct_wins}
           />
 
           <h2 className = 'subTitle'>Stats</h2>
@@ -79,7 +92,6 @@ class Stats extends React.Component{
             shots = {123}
             accuracy ={100}
           />
-
           <h2 className ='subTitle'>Achievements</h2>
           <Achievements
             achievementSchema = {this.state.gameSchema.achievements}

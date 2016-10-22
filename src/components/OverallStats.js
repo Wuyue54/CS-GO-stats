@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 
 const OverallStats = ({kill, death, deathRatio, headshot, knife, wins, winRatio, mvp, shots, accuracy}) =>{
+
 		return(
 			<div className = 'overall-stats row'>
 				<ul className ='col-6'>
@@ -31,6 +32,6 @@ OverallStats.propTypes = {
 	winRatio: PropTypes.string.isRequired,
 	mvp: PropTypes.number.isRequired,
 	shots: PropTypes.number.isRequired
-}
+};
 
 export default OverallStats;
