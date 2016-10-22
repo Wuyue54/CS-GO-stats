@@ -15,7 +15,7 @@ const routes = require('./src/routes');
 const app = express();
 
 app.set('port', process.env.PORT || 3000);
-app.use('/static', express.static(__dirname + '/public'));
+app.use('/public', express.static(__dirname + '/public'));
 
 
 app.get('/', function(req,res){
@@ -80,21 +80,21 @@ app.get('/api/userInfo', function(req,res){
 });
 
 
-app.use(function(req, res) {
-  Router.match({ routes: routes.default, location: req.url }, function(err, redirectLocation, renderProps) {
-    if (err) {
-      res.status(500).send(err.message)
-    } else if (redirectLocation) {
-      res.status(302).redirect(redirectLocation.pathname + redirectLocation.search)
-    } else if (renderProps) {
-      var html = ReactDOM.renderToString(React.createElement(Router.RouterContext, renderProps));
-      var page = swig.renderFile('./index.html', { html: html });
-      res.status(200).send(page);
-    } else {
-      res.status(404).send('Page Not Found')
-    }
-  });
-});
+// app.use(function(req, res) {
+//   Router.match({ routes: routes.default, location: req.url }, function(err, redirectLocation, renderProps) {
+//     if (err) {
+//       res.status(500).send(err.message)
+//     } else if (redirectLocation) {
+//       res.status(302).redirect(redirectLocation.pathname + redirectLocation.search)
+//     } else if (renderProps) {
+//       var html = ReactDOM.renderToString(React.createElement(Router.RouterContext, renderProps));
+//       // var page = swig.renderFile('./index.html', { html: html });
+//       res.status(200).send(html);
+//     } else {
+//       res.status(404).send('Page Not Found')
+//     }
+//   });
+// });
 
 const server = require('http').createServer(app);
 server.listen(app.get('port'),function(){

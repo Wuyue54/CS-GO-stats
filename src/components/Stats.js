@@ -15,6 +15,7 @@ class Stats extends React.Component{
 
   componentDidMount(){
     let query = this.props.params.userID;
+    console.log('did mount');
     StatsActions.getSchema();
     StatsActions.getUserInfo({
       searchQuery: query
@@ -52,7 +53,7 @@ class Stats extends React.Component{
     this.state.playerStats.forEach((d,index)=>{
       statsObj[d.name] = d.value;
     });
-    console.log(statsObj);
+    // console.log(statsObj);
     this.state.playerAchievements.forEach((d,index)=>{
 			achieveObj[d.name] = d.achieved;
 		});
