@@ -1,25 +1,15 @@
 
-
-require('babel-register');
-
 const express = require('express');
 const path = require('path');
 const request = require('request');
 
-// const swig = require('swig');
-// const React = require('react');
-// const Router = require('react-router');
-// const ReactDOM = require('react-dom/server');
-// const routes = require('./src/routes');
-
 const app = express();
 
 app.set('port', process.env.PORT || 3000);
-app.use('/public', express.static(`${__dirname}/public`));
-
+app.use('/', express.static(`${__dirname}/public`));
 
 app.get('/', (req, res) => {
-  res.sendFile(`${__dirname}/index.html`);
+  res.sendFile(`${__dirname}/public/index.html`);
 });
 
 // another test steamID 76561198174597537
@@ -50,14 +40,14 @@ app.get('/api/states', (req, res) => {
   const url = `${STEAM_URL + API_KEY}&steamid=${userSteamID}`;
   request(url, (error, response, body) => {
     if (error) {
-	        console.log('Error:', error);
-	    }
+      console.log('Error:', error);
+    }
 
-	    if (response.statusCode !== 200) {
-	        console.log('Invalid Status Code Returned:', response.statusCode);
-	    }
+    if (response.statusCode !== 200) {
+      console.log('Invalid Status Code Returned:', response.statusCode);
+    }
 
-	    body = JSON.parse(body);
+    body = JSON.parse(body);
     res.send(body.playerstats);
   });
 });
@@ -77,23 +67,6 @@ app.get('/api/userInfo', (req, res) => {
     res.send(body.response.players[0]);
   });
 });
-
-
-// app.use(function(req, res) {
-//   Router.match({ routes: routes.default, location: req.url }, function(err, redirectLocation, renderProps) {
-//     if (err) {
-//       res.status(500).send(err.message)
-//     } else if (redirectLocation) {
-//       res.status(302).redirect(redirectLocation.pathname + redirectLocation.search)
-//     } else if (renderProps) {
-//       var html = ReactDOM.renderToString(React.createElement(Router.RouterContext, renderProps));
-//       var page = swig.renderFile('./index.html', { html: html });
-//       res.status(200).send(html);
-//     } else {
-//       res.status(404).send('Page Not Found')
-//     }
-//   });
-// });
 
 const server = require('http').createServer(app);
 
