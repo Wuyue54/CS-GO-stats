@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const OverallStats = ({ kill, death, deathRatio, headshot, knife, wins, winRatio, mvp, shots, accuracy }) => (
   <div className="overall-stats row">
@@ -28,7 +29,7 @@ OverallStats.propTypes = {
   wins: PropTypes.number.isRequired,
   winRatio: PropTypes.string.isRequired,
   mvp: PropTypes.number.isRequired,
-  shots: PropTypes.number.isRequired,
+  shots: PropTypes.number.isRequired
 };
 
 export default OverallStats;

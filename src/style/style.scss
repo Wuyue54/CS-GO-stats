@@ -13,10 +13,10 @@ $padding: 16px;
 
 @mixin box-sizing($border-box) {
  	box-sizing: $border-box;
-    -webkit-box-sizing: $border-box;
-    -moz-box-sizing: $border-box;
-  	-ms-box-sizing: $border-box;
-  	-o-box-sizing: $border-box;
+	-webkit-box-sizing: $border-box;
+	-moz-box-sizing: $border-box;
+	-ms-box-sizing: $border-box;
+	-o-box-sizing: $border-box;
 }
 
 body{
@@ -136,7 +136,6 @@ h1{
 	padding-right: $padding/2;
 	cursor: help;
 	&:hover{
-		// border: 1px solid $color-blue;
 		.thumb{
 			display: block;
 		}
@@ -152,7 +151,6 @@ h1{
 	background-color: rgba(11,12,26,0.9);
 	padding: 1em;
 	color: #FFF;
-
 	z-index: 3;
 	dt{
 		line-height: 2em;

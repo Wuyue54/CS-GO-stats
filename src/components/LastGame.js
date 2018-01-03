@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const LastGame = ({ kill, death, round, money, damage, ctWins, tWins, mvp }) => (
   <div className="lastgame-stats row">
@@ -25,7 +26,7 @@ LastGame.propTypes = {
   damage: PropTypes.number.isRequired,
   ctWins: PropTypes.number.isRequired,
   tWins: PropTypes.number.isRequired,
-  mvp: PropTypes.number.isRequired,
+  mvp: PropTypes.number.isRequired
 };
 
 export default LastGame;
