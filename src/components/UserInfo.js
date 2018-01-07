@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const UserInfo = ({ imgUrl, profileurl, personaname }) => (
   <div className="userInfo row">
@@ -10,7 +11,7 @@ const UserInfo = ({ imgUrl, profileurl, personaname }) => (
 UserInfo.propTypes = {
   imgUrl: PropTypes.string.isRequired,
   profileurl: PropTypes.string.isRequired,
-  personaname: PropTypes.string.isRequired,
+  personaname: PropTypes.string.isRequired
 };
 
 export default UserInfo;

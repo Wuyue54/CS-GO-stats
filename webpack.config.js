@@ -1,55 +1,114 @@
 const webpack = require('webpack');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackNotifierPlugin = require('webpack-notifier');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 const path = require('path');
 
-module.exports = {
-  devtool: 'cheap-module-source-map',
-  entry: [
-    'webpack-dev-server/client?http://127.0.0.1:8080/',
-    'webpack/hot/only-dev-server',
-    './src/index.js',
-  ],
-  output: {
-    path: path.join(__dirname, 'public'),
-    filename: 'bundle.js',
-    publicPath: '/public/',
+const sourcePath = path.resolve('./src');
+const buildPath = path.resolve('./public');
+
+const env = process.env.NODE_ENV || 'development';
+
+const isDev = (x, alt = null) => env === 'development' ? x : alt;
+const isProd = (x, alt = null) => env === 'production' ? x : alt;
+
+const noNulls = x => x;
+
+const entry = [
+  'babel-polyfill',
+  isDev('react-hot-loader/patch'),
+  isDev('webpack-dev-server/client?http://localhost:8080'),
+  isDev('webpack/hot/only-dev-server'),
+  'index'
+].filter(noNulls);
+
+const output = {
+  filename: 'bundle.js',
+  path: buildPath,
+  publicPath: '/'
+};
+
+const plugins = [
+  new webpack.NamedModulesPlugin(),
+  isDev(new webpack.HotModuleReplacementPlugin()),
+  isDev(new webpack.NoEmitOnErrorsPlugin()),
+  isDev(new WebpackNotifierPlugin()),
+  isProd(new UglifyJSPlugin()),
+  new ExtractTextPlugin({filename: '[name].bundle.css', disable: env === 'development'}),
+  new HtmlWebpackPlugin({
+    template: 'index.html'
+  }),
+  new webpack.DefinePlugin({
+    'process.env': {
+      'NODE_ENV': JSON.stringify(env)
+    }
+  })
+].filter(noNulls);
+
+const rules = [
+  {
+    test: /\.js$/,
+    include: sourcePath,
+    exclude: /node_modules/,
+    loader: 'babel-loader'
   },
+  {
+    test: /\.css$/,
+    use: ExtractTextPlugin.extract({
+      fallback: 'style-loader',
+      use: [
+        {
+          loader: "css-loader"
+        }
+      ]
+    })
+  },
+  {
+    test: /\.scss$/,
+    use: ExtractTextPlugin.extract({
+      fallback: 'style-loader',
+      use: [
+        {
+          loader: "css-loader"
+        },
+        {
+          loader: "sass-loader"
+        }
+      ]
+    })
+  },
+  {
+    test: /\.(png|svg|jpg|gif)$/,
+    use: [
+      'file-loader'
+    ]
+  }
+];
+
+module.exports = {
+  devtool: isProd('source-map', 'inline-source-map'),
+  context: sourcePath,
+  entry,
+  output,
   resolve: {
-    modulesDirectories: ['node_modules', 'src'],
-    extensions: ['', '.js', 'map', '.jsx'],
+    modules: ['node_modules', sourcePath],
+    extensions: ['.js'],
   },
   module: {
-    loaders: [
-      {
-        test: /\.jsx?$/,
-          exclude: /(node_modules)/,
-          loaders: ['react-hot', 'babel'],
-      },
-      {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader!autoprefixer-loader?browsers=last 2 versions',
-      },
-      {
-        test: /\.sass/,
-        loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded&indentedSyntax',
-      },
-      {
-        test: /\.scss/,
-        loader: 'style-loader!css-loader!autoprefixer-loader?browsers=last 2 versions!sass-loader?outputStyle=expanded',
-      },
-      {
-        test: /\.(png|jpg|gif|woff|woff2|eot|ttf|svg)$/,
-        loader: 'url-loader?limit=8192',
-      },
-    ],
+    rules,
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-  ],
+  plugins,
   devServer: {
+    compress: true,
+    hot: true,
+    inline: true,
     host: 'localhost',
-    	port: 8080,
-	    proxy: {
-	      '/api/*': 'http://localhost:3000',
-	    },
-  	},
+    historyApiFallback: true,
+    port: 8080,
+    proxy: {
+      '/api': 'http://localhost:3000',
+    }
+  }
 };

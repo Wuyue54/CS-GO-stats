@@ -1,50 +1,43 @@
-import React from 'react';
-import SearchActions from '../actions/SearchActions';
-import SearchStore from '../stores/SearchStore';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 
-class Search extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = SearchStore.getState();
-    this.onChange = this.onChange.bind(this);
+class Search extends Component {
+  state = {
+    userId: ''
+  };
+
+  onChangeHandler = (e) => {
+    this.setState({
+      userId: e.target.value
+    });
   }
 
-  componentDidMount() {
-    SearchStore.listen(this.onChange);
-  }
-
-  componentWillUnmount() {
-    SearchStore.unlisten(this.onChange);
-  }
-
-  onChange(state) {
-    this.setState(state);
-  }
-
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    const searchQuery = this.state.searchQuery.trim();
-    if (searchQuery) {
-      SearchActions.getUserInfo({
-        searchQuery,
-        searchForm: this.refs.searchForm,
-        history: this.props.router,
-      });
-    }
+    this.props.getUserInfo(this.state.userId);
   }
 
-  render() {
+  render () {
+    const { userId } = this.state;
     return (
       <div>
-        <form className="searchForm" ref="searchForm" onSubmit={this.handleSubmit.bind(this)}>
-          <input autoComplete="on" type="text"	placeholder="Please type your 64 bit steam id" value={this.state.searchQuery} onChange={SearchActions.updateSearch} />
-          <button className="btn" onClick={this.handleSubmit.bind(this)}>GO</button>
+        <form className="searchForm">
+          <input
+            type="text"
+            placeholder="Please type your 64 bit steam id"
+            value={userId}
+            onChange={this.onChangeHandler} />
+          <button className="btn" onClick={this.handleSubmit}>GO</button>
         </form>
       </div>
     );
   }
 }
+
+Search.propTypes = {
+  getUserInfo: PropTypes.func.isRequired
+};
 
 export default withRouter(Search);

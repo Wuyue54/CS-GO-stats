@@ -6,10 +6,10 @@ $break-medium:'only screen and (min-width: 768px)';
 
 @mixin border-box{
 	box-sizing:border-box;
-    -webkit-box-sizing:border-box;
-    -moz-box-sizing:border-box;
-  	-ms-box-sizing:border-box;
-  	-o-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	-o-box-sizing:border-box;
 }
 
 @mixin addPadding{
@@ -23,7 +23,7 @@ $break-medium:'only screen and (min-width: 768px)';
 	&:after{
 		content: ' ';
 		display: table;
-	},
+	};
 	&:after{
 		clear:both;
 	}
@@ -55,7 +55,6 @@ $break-medium:'only screen and (min-width: 768px)';
 	float: left;
 	width: 100%;
 	min-height: 1px;
-	display: inline-block;
 }
 
 .img{
@@ -69,18 +68,18 @@ $break-medium:'only screen and (min-width: 768px)';
 		width: 960px;
 	}
 	@for $i from 1 through $numOfCol {
-	    .col-#{$i}{
-	      width:($containerWidth )/$numOfCol*$i; 
-	    }
-	    .col-offset-#{$i}{
-	      margin-left:($containerWidth )/$numOfCol*$i; 
-	    }
-	    .col-push-#{$i}{
-	      left:($containerWidth )/$numOfCol*$i;
-	    }
-	    .col-pull-#{$i}{
-	      right:($containerWidth )/$numOfCol*$i;
-	    }
+		.col-#{$i}{
+			width:($containerWidth )/$numOfCol*$i;
+		}
+		.col-offset-#{$i}{
+			margin-left:($containerWidth )/$numOfCol*$i;
+		}
+		.col-push-#{$i}{
+			left:($containerWidth )/$numOfCol*$i;
+		}
+		.col-pull-#{$i}{
+			right:($containerWidth )/$numOfCol*$i;
+		}
 	}
 }
 

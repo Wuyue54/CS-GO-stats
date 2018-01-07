@@ -1,4 +1,5 @@
 # CS-GO-states
+
 A side project for fun.
 Below is the screenshot so far.
 ![Screenshot](docs/screenshot.png)
