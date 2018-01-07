@@ -12,7 +12,7 @@ $padding: 16px;
 }
 
 @mixin box-sizing($border-box) {
- 	box-sizing: $border-box;
+  box-sizing: $border-box;
 	-webkit-box-sizing: $border-box;
 	-moz-box-sizing: $border-box;
 	-ms-box-sizing: $border-box;
@@ -21,7 +21,9 @@ $padding: 16px;
 
 body{
 	background-color: #0b0c1a;
+	font-family: sans-serif;
 }
+
 a{
 	text-decoration:none;
 }
